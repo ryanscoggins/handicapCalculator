@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "scrambleHandicap:build:production"
+              "buildTarget": "scrambleHandicap:build:production"
             },
             "development": {
-              "browserTarget": "scrambleHandicap:build:development"
+              "buildTarget": "scrambleHandicap:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "scrambleHandicap:build"
+            "buildTarget": "scrambleHandicap:build"
           }
         },
         "test": {
