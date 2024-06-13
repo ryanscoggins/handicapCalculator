@@ -16,4 +16,11 @@
         <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1"></p-inputNumber>
     </div>
     <p-button (onClick)="calculateTeamHandicap()">Create Teams</p-button>
+    <div *ngIf="showMatchups">
+        <div *ngFor="let matchup of matchups">
+            {{matchup.teams[0].golfers[0].name}} & {{matchup.teams[0].golfers[1].name}}
+            vs.
+            {{matchup.teams[1].golfers[0].name}} & {{matchup.teams[1].golfers[1].name}}
+        </div> 
+    </div>
 </div>
