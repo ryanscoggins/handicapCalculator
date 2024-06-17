@@ -62,7 +62,6 @@ export class HomeComponent {
     }
     this.showMatchups = true;
     this.matchups = [this.matchup1, this.matchup2, this.matchup3] 
-    console.log(this.matchups)
   }
 
 }
