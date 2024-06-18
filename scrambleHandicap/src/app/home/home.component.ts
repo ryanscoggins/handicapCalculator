@@ -12,7 +12,7 @@ export class HomeComponent {
   golfer2: Golfer = { name: 'Golfer 2', handicap: 12 };
   golfer3: Golfer = { name: 'Golfer 3', handicap: 7 };
   golfer4: Golfer = { name: 'Golfer 4', handicap: 10 };
-  format: string = 'friendly';
+  friendlyFormat: boolean = true;
   teams: Team[] = []; 
   matchup1: Pairing = { teams: [] };
   matchup2: Pairing = { teams: [] };
@@ -47,14 +47,14 @@ export class HomeComponent {
   calculateTeamHandicap(): void {
     let totalHandicap = 0;
     for (let team of this.teams) {
-        switch (this.format) {
-          case 'friendly':
+        switch (this.friendlyFormat) {
+          case true:
             for (let golfer of team.golfers) {
               totalHandicap += golfer.handicap;
             }
             totalHandicap = totalHandicap / 4
             break;
-          case 'scratch':
+          case false:
             let lowerHandicap = Math.min(team.golfers[0].handicap, team.golfers[1].handicap);
             let higherHandicap = Math.max(team.golfers[0].handicap, team.golfers[1].handicap);
             totalHandicap = (lowerHandicap * 0.35) + (higherHandicap * 0.15);

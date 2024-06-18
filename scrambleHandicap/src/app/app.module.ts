@@ -4,6 +4,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { Button } from 'primeng/button';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { MatchupComponent } from './matchup/matchup.component';
     InputTextModule,
     FormsModule,
     InputNumberModule,
-    Button
+    Button,
+    InputSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

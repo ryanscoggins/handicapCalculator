@@ -15,6 +15,7 @@
         <input type="text" pInputText [(ngModel)]="golfer4.name" />
         <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1"></p-inputNumber>
     </div>
+    USGA<p-inputSwitch [(ngModel)]="friendlyFormat" />Friendly
     <p-button (onClick)="calculateTeamHandicap()">Create Teams</p-button>
     <div *ngIf="showMatchups">
         <app-matchup [matchups]="matchups"></app-matchup>
