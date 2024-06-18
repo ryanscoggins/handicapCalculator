@@ -1,5 +1,6 @@
 import { Team } from "./team";
 
 export interface Pairing {
-    teams: Team[]
+    teams: Team[],
+    handicapDiff?: number
 }
