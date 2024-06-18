@@ -1,2 +1,8 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    padding: .5rem;
+}
