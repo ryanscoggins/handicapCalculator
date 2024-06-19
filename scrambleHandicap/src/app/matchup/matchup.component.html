@@ -1,7 +1,25 @@
 <div style="display: flex; flex-direction: column;">
-    <div *ngFor="let matchup of matchups">
-        {{matchup.teams[0].golfers[0].name}} & {{matchup.teams[0].golfers[1].name}} ({{matchup.teams[0].handicap}})
-        vs.
-        {{matchup.teams[1].golfers[0].name}} & {{matchup.teams[1].golfers[1].name}} ({{matchup.teams[1].handicap}}), difference: {{matchup.handicapDiff}}
+    <div *ngFor="let matchup of matchups" class="matchup">
+        <div class="teams-container">
+            <div class="team">
+                <div>{{matchup.teams[0].golfers[0].name}}</div>
+                <div>&</div>
+                <div>{{matchup.teams[0].golfers[1].name}}</div>
+                <div>Team handicap: {{matchup.teams[0].handicap}}</div>
+            </div>
+            vs.
+            <div class="team">
+                <div>{{matchup.teams[1].golfers[0].name}}</div>
+                <div>&</div>
+                <div>{{matchup.teams[1].golfers[1].name}}</div>
+                <div>Team handicap: {{matchup.teams[1].handicap}}</div>
+            </div>
+        </div>  
+        <div *ngIf="matchup.handicapDiff! == 0; else strokes">
+            This matchup is even and no strokes should be awarded.
+        </div>
+        <ng-template #strokes>
+           {{matchup.handicapDiff}}
+        </ng-template>
     </div> 
 </div>

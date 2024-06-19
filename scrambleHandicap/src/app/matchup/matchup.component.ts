@@ -17,7 +17,7 @@ export class MatchupComponent {
 
   calculateHandicapDiff() {
     this.matchups.forEach(matchup => {
-        matchup.handicapDiff = Math.round(Math.abs(matchup.teams[0].handicap! - matchup.teams[1].handicap!) * 10) / 10
+        matchup.handicapDiff = Math.round(Math.abs(matchup.teams[0].handicap! - matchup.teams[1].handicap!))
     });
   }
 
