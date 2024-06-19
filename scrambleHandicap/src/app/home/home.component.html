@@ -17,7 +17,7 @@
             <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
         </div>
         <div class="center-div" style="align-items: center">
-            USGA<p-inputSwitch [(ngModel)]="friendlyFormat" styleClass="mt-2" />Friendly
+            USGA<p-inputSwitch [(ngModel)]="friendlyFormat" styleClass="mt-2" (ngModelChange)="inputChange()"/>Friendly
         </div>
         <div class="center-div">
             <p-button (onClick)="createTeams(); calculateTeamHandicap()">Create Teams</p-button>
