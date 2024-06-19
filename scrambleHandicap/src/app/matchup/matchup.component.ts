@@ -12,13 +12,12 @@ export class MatchupComponent {
   ngOnInit() {
     this.calculateHandicapDiff();
     this.matchups = this.sortMatchups(this.matchups);
-    console.log(this.matchups)
   } 
 
 
   calculateHandicapDiff() {
     this.matchups.forEach(matchup => {
-        matchup.handicapDiff = Math.round(Math.abs(matchup.teams[0].handicap - matchup.teams[1].handicap) * 10) / 10
+        matchup.handicapDiff = Math.round(Math.abs(matchup.teams[0].handicap! - matchup.teams[1].handicap!) * 10) / 10
     });
   }
 

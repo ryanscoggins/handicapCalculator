@@ -1,29 +1,30 @@
 <div class="center-div">
     <div class="center-div" style="flex-direction: column;">
         <div>
-            <input type="text" pInputText [(ngModel)]="golfer1.name" />
-            <p-inputNumber [(ngModel)]="golfer1.handicap" [maxFractionDigits]="1"></p-inputNumber>
+            <input type="text" pInputText [(ngModel)]="golfer1.name" (ngModelChange)="inputChange()"/>
+            <p-inputNumber [(ngModel)]="golfer1.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
         </div>
         <div>
-            <input type="text" pInputText [(ngModel)]="golfer2.name" />
-            <p-inputNumber [(ngModel)]="golfer2.handicap" [maxFractionDigits]="1"></p-inputNumber>
+            <input type="text" pInputText [(ngModel)]="golfer2.name" (ngModelChange)="inputChange()"/>
+            <p-inputNumber [(ngModel)]="golfer2.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
         </div>
         <div>
-            <input type="text" pInputText [(ngModel)]="golfer3.name" />
-            <p-inputNumber [(ngModel)]="golfer3.handicap" [maxFractionDigits]="1"></p-inputNumber>
+            <input type="text" pInputText [(ngModel)]="golfer3.name" (ngModelChange)="inputChange()"/>
+            <p-inputNumber [(ngModel)]="golfer3.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
         </div>
         <div>
-            <input type="text" pInputText [(ngModel)]="golfer4.name" />
-            <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1"></p-inputNumber>
+            <input type="text" pInputText [(ngModel)]="golfer4.name" (ngModelChange)="inputChange()"/>
+            <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
+        </div>
+        <div class="center-div" style="align-items: center">
+            USGA<p-inputSwitch [(ngModel)]="friendlyFormat" styleClass="mt-2" />Friendly
+        </div>
+        <div class="center-div">
+            <p-button (onClick)="createTeams(); calculateTeamHandicap()">Create Teams</p-button>
         </div>
     </div>
 </div>
-<div class="center-div">
-    <div>
-        USGA<p-inputSwitch [(ngModel)]="friendlyFormat" />Friendly
-        <p-button (onClick)="calculateTeamHandicap()">Create Teams</p-button>
-    </div>
-</div>
+
 <div class="center-div" *ngIf="showMatchups">
     <app-matchup [matchups]="matchups"></app-matchup>
 </div>
