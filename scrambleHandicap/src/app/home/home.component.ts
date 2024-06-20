@@ -41,6 +41,7 @@ export class HomeComponent {
     let team5: Team = {golfers: [this.golfer1, this.golfer4]}
     let team6: Team = {golfers: [this.golfer2, this.golfer3]}
     this.matchup3 = {teams: [team5, team6]}
+    // form different combinations of teams
     this.teams = [team1, team2, team3, team4, team5, team6]
 
     this.matchups = [this.matchup1, this.matchup2, this.matchup3] 
@@ -65,6 +66,9 @@ export class HomeComponent {
       }
       // round to nearest tenth
       team.handicap = Math.round(totalHandicap * 10) / 10; 
+    }
+    for (let matchup of this.matchups) {
+      matchup.teams.sort((a, b) => a.handicap! - b.handicap!)
     }
     this.showMatchups = true;
   }

@@ -20,7 +20,7 @@
             USGA<p-inputSwitch [(ngModel)]="friendlyFormat" styleClass="mt-2" (ngModelChange)="inputChange()"/>Friendly
         </div>
         <div class="center-div">
-            <p-button (onClick)="createTeams(); calculateTeamHandicap()">Create Teams</p-button>
+            <p-button [disabled]="showMatchups" (onClick)="createTeams(); calculateTeamHandicap()">Create Teams</p-button>
         </div>
     </div>
 </div>

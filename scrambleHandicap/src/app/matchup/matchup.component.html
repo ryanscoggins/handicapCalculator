@@ -2,6 +2,7 @@
     <div *ngFor="let matchup of matchups" class="matchup">
         <div class="teams-container">
             <div class="team">
+                <div>Team 1</div>
                 <div>{{matchup.teams[0].golfers[0].name}}</div>
                 <div>&</div>
                 <div>{{matchup.teams[0].golfers[1].name}}</div>
@@ -9,6 +10,7 @@
             </div>
             vs.
             <div class="team">
+                <div>Team 2</div>
                 <div>{{matchup.teams[1].golfers[0].name}}</div>
                 <div>&</div>
                 <div>{{matchup.teams[1].golfers[1].name}}</div>
@@ -19,7 +21,7 @@
             This matchup is even and no strokes should be awarded.
         </div>
         <ng-template #strokes>
-           {{matchup.handicapDiff}}
+            Team 1 should grant Team 2 {{matchup.handicapDiff}} strokes.
         </ng-template>
     </div> 
 </div>
