@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div *ngIf="matchup.handicapDiff !== 0; else nostrokes">
-                    Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> strokes.
+                    Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
                 </div>
                 <ng-template #nostrokes>
                     This matchup is even and <b>no strokes</b> should be awarded
@@ -46,7 +46,7 @@
                             <div>Team handicap: {{matchup.teams[1].handicap}}</div>
                         </div>
                     </div>
-                    Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> strokes.
+                    Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
                 </div>
             </ng-template>
         </div>
