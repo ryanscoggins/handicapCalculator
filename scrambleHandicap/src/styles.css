@@ -14,16 +14,26 @@
     align-items: center;
 }
 
-.matchup {
+.green-border {
+    border-radius: 5px;
+    background-color: #01d449;
+}
+
+.yellow-border {
+    border-radius: 5px;
+    background-color: #fe6601;
+}
+
+.stack {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     align-items: center;
+    text-align: center;
 }
 
 .team {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem;
+    padding: 1rem 3rem;
 }
