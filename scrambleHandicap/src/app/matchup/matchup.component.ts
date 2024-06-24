@@ -3,8 +3,7 @@ import { Pairing } from 'src/interfaces/pairing';
 
 @Component({
   selector: 'app-matchup',
-  templateUrl: './matchup.component.html',
-  styleUrl: './matchup.component.css'
+  templateUrl: './matchup.component.html'
 })
 export class MatchupComponent {
   @Input() matchups!: Pairing[];

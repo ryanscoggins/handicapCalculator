@@ -1,5 +1,6 @@
 <div class="center-div">
-    <div class="center-div" style="flex-direction: column;">
+    <div class="stack">
+        <app-explainer></app-explainer>
         <div>
             <input type="text" pInputText [(ngModel)]="golfer1.name" (ngModelChange)="inputChange()"/>
             <p-inputNumber [(ngModel)]="golfer1.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
@@ -25,6 +26,6 @@
     </div>
 </div>
 
-<div class="center-div" *ngIf="showMatchups">
-    <app-matchup [matchups]="matchups" style="width: 50%"></app-matchup>
+<div class="center-div">
+        <app-matchup [matchups]="matchups" *ngIf="showMatchups"></app-matchup>
 </div>

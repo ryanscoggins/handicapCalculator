@@ -37,3 +37,8 @@
     align-items: center;
     padding: 1rem 3rem;
 }
+
+.explainer-div {
+    flex: 1;
+    text-align: center;
+}

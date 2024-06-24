@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MatchupComponent } from './matchup/matchup.component';
+import { ExplainerComponent } from './explainer/explainer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MatchupComponent
+    MatchupComponent,
+    ExplainerComponent
   ],
   imports: [
     BrowserModule,
