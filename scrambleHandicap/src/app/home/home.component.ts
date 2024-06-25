@@ -8,10 +8,10 @@ import { Pairing } from 'src/interfaces/pairing';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  golfer1: Golfer = { name: 'Ryan', handicap: 14.2 };
-  golfer2: Golfer = { name: 'Blake', handicap: 11 };
-  golfer3: Golfer = { name: 'Chase', handicap: 17.6 };
-  golfer4: Golfer = { name: 'Max', handicap: 12.7 };
+  golfer1: Golfer = { name: 'Golfer 1', handicap: 0 };
+  golfer2: Golfer = { name: 'Golfer 2', handicap: 0 };
+  golfer3: Golfer = { name: 'Golfer 3', handicap: 0 };
+  golfer4: Golfer = { name: 'Golfer 4', handicap: 0 };
   friendlyFormat: boolean = true;
   teams: Team[] = []; 
   matchup1: Pairing = { teams: [] };
