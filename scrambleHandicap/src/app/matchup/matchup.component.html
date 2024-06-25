@@ -1,7 +1,29 @@
-<div style="display: flex; flex-direction: row;">
+<div style="display: flex; flex-direction: column;">
     <div *ngFor="let matchup of matchups; index as i" class="stack">
         <div class="stack" style="padding-bottom: .5rem">
-            <div *ngIf="i == 0; else otherMatchups" class="green-border fade-in">
+            <!-- number 2 matchup -->
+            <div *ngIf="i==1" class="orange-container delay-0-5s">
+                <div class="teams-container">
+                    <div class="team">
+                        <b>Team 1</b>
+                        <div>{{matchup.teams[0].golfers[0].name}}</div>
+                        <div>&</div>
+                        <div>{{matchup.teams[0].golfers[1].name}}</div>
+                        <div>Team handicap: {{matchup.teams[0].handicap}}</div>
+                    </div>
+                    vs.
+                    <div class="team">
+                        <b>Team 2</b>
+                        <div>{{matchup.teams[1].golfers[0].name}}</div>
+                        <div>&</div>
+                        <div>{{matchup.teams[1].golfers[1].name}}</div>
+                        <div>Team handicap: {{matchup.teams[1].handicap}}</div>
+                    </div>
+                </div>
+                Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
+            </div>
+            <!-- number 1 matchup -->
+            <div *ngIf="i == 0" class="green-container">
                     <h2>Best Matchup</h2>
                 <div class="teams-container">
                     <div class="team">
@@ -27,8 +49,8 @@
                     This matchup is even and <b>no strokes</b> should be awarded
                 </ng-template>
             </div>  
-            <ng-template #otherMatchups>
-                <div class="yellow-border" [ngClass]="i == 1 ? 'delay-0-5s' : 'delay-0-10s'">
+                <!-- number 3 matchup -->
+                <div *ngIf="i==2" class="orange-container delay-0-10s">
                     <div class="teams-container">
                         <div class="team">
                             <b>Team 1</b>
@@ -48,7 +70,6 @@
                     </div>
                     Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
                 </div>
-            </ng-template>
         </div>
     </div> 
 </div>
