@@ -1,9 +1,9 @@
-<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row;">
     <div *ngFor="let matchup of matchups; index as i" class="stack">
         <div class="stack" style="padding-bottom: .5rem">
-            <div *ngIf="i == 0; else strokes" class="green-border">
+            <div *ngIf="i == 0; else otherMatchups" class="green-border fade-in">
                     <h2>Best Matchup</h2>
-                <div class="teams-container ">
+                <div class="teams-container">
                     <div class="team">
                         <b>Team 1</b>
                         <div>{{matchup.teams[0].golfers[0].name}}</div>
@@ -27,8 +27,8 @@
                     This matchup is even and <b>no strokes</b> should be awarded
                 </ng-template>
             </div>  
-            <ng-template #strokes>
-                <div class="yellow-border">
+            <ng-template #otherMatchups>
+                <div class="yellow-border" [ngClass]="i == 1 ? 'delay-0-5s' : 'delay-0-10s'">
                     <div class="teams-container">
                         <div class="team">
                             <b>Team 1</b>

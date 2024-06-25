@@ -57,6 +57,7 @@ export class HomeComponent {
               totalHandicap += golfer.handicap;
             }
             totalHandicap = totalHandicap / 4
+              console.log(team)
             break;
           case false:
             let lowerHandicap = Math.min(team.golfers[0].handicap, team.golfers[1].handicap);
