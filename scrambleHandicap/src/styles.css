@@ -22,13 +22,13 @@
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 	animation-duration: 2s;
-    margin: .5rem;
+    margin: .25rem;
 }
 
 .orange-container {
     border-radius: 5px;
     background-color: #fe6601;
-    margin: .5rem;
+    margin: .25rem;
 }
 
 .stack {
@@ -96,3 +96,22 @@
 		opacity: 1;
 	}
 }
+
+.inputRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20rem;
+  }
+  
+  .inputRow input {
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+    width: 75%;
+  }
+  
+  .inputRow p-inputNumber {
+    width: 25%;
+  }
+  
+
