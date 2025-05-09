@@ -56,10 +56,7 @@ export class HomeComponent {
           for (let golfer of team.golfers) {
             totalHandicap += golfer.handicap;
           }
-          console.log(team.golfers)
-          console.log(`team total hc before divide: ${totalHandicap}`)
           totalHandicap = totalHandicap / 4
-          console.log(`team total hc after divide: ${totalHandicap}`)
           break;
         case false:
           let lowerHandicap = Math.min(team.golfers[0].handicap, team.golfers[1].handicap);

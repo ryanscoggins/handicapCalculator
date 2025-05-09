@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MatchupComponent } from './matchup/matchup.component';
 import { ExplainerComponent } from './explainer/explainer.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MatchupComponent,
-    ExplainerComponent
+    ExplainerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
