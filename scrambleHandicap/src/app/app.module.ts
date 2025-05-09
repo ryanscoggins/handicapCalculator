@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { Button } from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,10 @@ import { MatchupComponent } from './matchup/matchup.component';
 import { ExplainerComponent } from './explainer/explainer.component';
 import { FooterComponent } from './footer/footer.component';
 import { CookieService } from 'ngx-cookie-service';
+import { FoursomeComponent } from './foursome/foursome.component';
+import { RouterModule } from '@angular/router';
+import { TournamentComponent } from './tournament/tournament.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     MatchupComponent,
     ExplainerComponent,
-    FooterComponent
+    FooterComponent,
+    FoursomeComponent,
+    TournamentComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +35,12 @@ import { CookieService } from 'ngx-cookie-service';
     InputTextModule,
     FormsModule,
     InputNumberModule,
-    Button,
-    InputSwitchModule
+    ButtonModule,
+    InputSwitchModule,
+    RouterModule.forRoot([
+      { path: '', component: FoursomeComponent },
+      { path: 'tournament', component: TournamentComponent },
+    ])
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
