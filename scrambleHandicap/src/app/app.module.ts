@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { MatchupComponent } from './matchup/matchup.component';
 import { ExplainerComponent } from './explainer/explainer.component';
 import { FooterComponent } from './footer/footer.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { FooterComponent } from './footer/footer.component';
     Button,
     InputSwitchModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

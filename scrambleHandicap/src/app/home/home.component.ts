@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Golfer } from 'src/interfaces/golfer';
 import { Team } from 'src/interfaces/team';
 import { Pairing } from 'src/interfaces/pairing';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,8 @@ export class HomeComponent {
   golfer2: Golfer = { name: 'Golfer 2', handicap: 0 };
   golfer3: Golfer = { name: 'Golfer 3', handicap: 0 };
   golfer4: Golfer = { name: 'Golfer 4', handicap: 0 };
+  allGolfers: Golfer[] = [ this.golfer1, this.golfer2, this.golfer3, this.golfer4 ]
+
   friendlyFormat: boolean = true;
   teams: Team[] = []; 
   matchup1: Pairing = { teams: [] };
@@ -20,8 +23,23 @@ export class HomeComponent {
   matchups: Pairing[] = [];
   showMatchups: boolean = false;
 
+  constructor(private cookieService: CookieService) {}
 
-  ngOnInit() { }
+
+  ngOnInit() {
+    const storedGolfers = localStorage.getItem('golfers');
+    if (storedGolfers) {
+      const parsed: Golfer[] = JSON.parse(storedGolfers);
+
+      // Assign stored data to current golfers
+      this.allGolfers.forEach((golfer, i) => {
+        if (parsed[i]) {
+          golfer.name = parsed[i].name;
+          golfer.handicap = parsed[i].handicap;
+        }
+      });
+    }
+   }
 
 
   inputChange() {
@@ -71,6 +89,8 @@ export class HomeComponent {
       matchup.teams.sort((a, b) => a.handicap! - b.handicap!)
     }
     this.showMatchups = true;
+
+    localStorage.setItem('golfers', JSON.stringify(this.allGolfers));
   }
 
 }
