@@ -69,19 +69,10 @@ export class FoursomeComponent {
   calculateTeamHandicap(): void {
     for (let team of this.teams) {
       let totalHandicap = 0;
-      switch (this.friendlyFormat) {
-        case true:
           for (let golfer of team.golfers) {
             totalHandicap += golfer.handicap;
           }
           totalHandicap = totalHandicap / 4
-          break;
-        case false:
-          let lowerHandicap = Math.min(team.golfers[0].handicap, team.golfers[1].handicap);
-          let higherHandicap = Math.max(team.golfers[0].handicap, team.golfers[1].handicap);
-          totalHandicap = (lowerHandicap * 0.35) + (higherHandicap * 0.15);
-          break;
-      }
       // round to nearest tenth
       team.handicap = Math.round(totalHandicap * 10) / 10; 
     }
