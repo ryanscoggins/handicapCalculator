@@ -1,1 +1,93 @@
-<p>tournament works!</p>
+<div class="stack">
+  <h1>Tournament Mode</h1>
+  <p style="color: #666;">Add all players, then click "Create Tournament" to generate groups and balanced teams.</p>
+
+  <div class="player-list">
+    <div *ngFor="let player of players; index as i" class="inputRow tournament-row">
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="player.name"
+        [placeholder]="'Player ' + (i + 1)"
+        (ngModelChange)="inputChange()"
+      />
+      <p-inputNumber
+        [(ngModel)]="player.handicap"
+        [maxFractionDigits]="1"
+        [min]="0"
+        (ngModelChange)="inputChange()"
+      ></p-inputNumber>
+      <p-button
+        *ngIf="players.length > 4"
+        icon="pi pi-times"
+        severity="danger"
+        [text]="true"
+        [rounded]="true"
+        (onClick)="removePlayer(i)"
+      ></p-button>
+    </div>
+  </div>
+
+  <div class="center-div" style="padding-top: .25rem;">
+    <p-button
+      *ngIf="canAddPlayer"
+      icon="pi pi-plus"
+      label="Add Player"
+      severity="secondary"
+      [outlined]="true"
+      (onClick)="addPlayer()"
+    ></p-button>
+    <small *ngIf="!canAddPlayer" style="color: #888;">Maximum 40 players reached</small>
+  </div>
+
+  <div style="color: #888; font-size: .85rem; padding-top: .25rem;">
+    {{ players.length }} / {{ maxPlayers }} players
+  </div>
+
+  <div class="center-div" style="padding-top: 1rem;">
+    <p-button label="Create Tournament" icon="pi pi-flag" (onClick)="createTournament()"></p-button>
+  </div>
+</div>
+
+<!-- Results -->
+<div *ngIf="showResults" class="stack" style="padding-top: 1.5rem;">
+
+  <!-- Groups Output -->
+  <h2>Player Groups</h2>
+  <p style="color: #666; font-size: .9rem;">Players ranked by handicap and divided into equal skill tiers.</p>
+  <div class="groups-container">
+    <div *ngFor="let group of groups" class="group-card">
+      <div class="group-label">Group {{ group.label }}</div>
+      <div *ngFor="let player of group.players; index as i" class="player-row">
+        <span class="player-name">{{ player.name?.trim() || ('Player') }}</span>
+        <span class="handicap-chip">{{ player.handicap }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teams Output -->
+  <h2 style="padding-top: 1rem;">Balanced Teams</h2>
+  <p style="color: #666; font-size: .9rem;">Players split into two teams with the most even handicap totals.</p>
+  <div class="balanced-teams">
+    <div class="balanced-team-card team-card-blue">
+      <div class="team-card-header">Team 1</div>
+      <div *ngFor="let player of teamA; index as i" class="player-row">
+        <span class="player-name">{{ player.name?.trim() || ('Player') }}</span>
+        <span class="handicap-chip">{{ player.handicap }}</span>
+      </div>
+      <div class="team-total">Total handicap: <b>{{ teamATotal }}</b></div>
+    </div>
+    <div class="balanced-team-card team-card-green">
+      <div class="team-card-header">Team 2</div>
+      <div *ngFor="let player of teamB; index as i" class="player-row">
+        <span class="player-name">{{ player.name?.trim() || ('Player') }}</span>
+        <span class="handicap-chip">{{ player.handicap }}</span>
+      </div>
+      <div class="team-total">Total handicap: <b>{{ teamBTotal }}</b></div>
+    </div>
+  </div>
+  <div style="color: #666; font-size: .85rem; padding-top: .5rem;">
+    Handicap difference between teams: <b>{{ teamDiff }}</b>
+  </div>
+
+</div>
