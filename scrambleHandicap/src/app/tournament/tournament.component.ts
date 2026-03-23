@@ -67,24 +67,24 @@ export class TournamentComponent {
     // Remove empty groups
     this.groups = this.groups.filter(g => g.players.length > 0);
 
-    // Split into two balanced teams using greedy algorithm
-    // Sort descending and assign each player to the team with the lower current total
-    const sortedDesc = [...this.players].sort((a, b) => b.handicap - a.handicap);
+    // Split into two equal-size teams using snake-draft order
+    // Sort ascending (best = lowest handicap first), then snake: 1, 2, 2, 1, 1, 2, 2, 1...
+    const sortedAsc = [...this.players].sort((a, b) => a.handicap - b.handicap);
     this.teamA = [];
     this.teamB = [];
-    let sumA = 0;
-    let sumB = 0;
 
-    for (const player of sortedDesc) {
-      if (sumA <= sumB) {
+    sortedAsc.forEach((player, i) => {
+      // Snake pattern repeats every 4 picks: A, B, B, A
+      const pos = i % 4;
+      if (pos === 0 || pos === 3) {
         this.teamA.push(player);
-        sumA += player.handicap;
       } else {
         this.teamB.push(player);
-        sumB += player.handicap;
       }
-    }
+    });
 
+    const sumA = this.teamA.reduce((s, g) => s + g.handicap, 0);
+    const sumB = this.teamB.reduce((s, g) => s + g.handicap, 0);
     this.teamATotal = Math.round(sumA * 10) / 10;
     this.teamBTotal = Math.round(sumB * 10) / 10;
     this.teamDiff = Math.round(Math.abs(sumA - sumB) * 10) / 10;
