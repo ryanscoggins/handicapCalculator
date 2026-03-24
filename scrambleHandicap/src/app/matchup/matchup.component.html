@@ -1,75 +1,40 @@
-<div style="display: flex; flex-direction: column;">
-    <div *ngFor="let matchup of matchups; index as i" class="stack">
-        <div class="stack" style="padding-bottom: .5rem">
-            <!-- number 2 matchup -->
-            <div *ngIf="i==1" class="orange-container delay-0-5s">
-                <div class="teams-container">
-                    <div class="team">
-                        <b>Team 1</b>
-                        <div>{{matchup.teams[0].golfers[0].name}}</div>
-                        <div>&</div>
-                        <div>{{matchup.teams[0].golfers[1].name}}</div>
-                        <div>Team handicap: {{matchup.teams[0].handicap}}</div>
-                    </div>
-                    vs.
-                    <div class="team">
-                        <b>Team 2</b>
-                        <div>{{matchup.teams[1].golfers[0].name}}</div>
-                        <div>&</div>
-                        <div>{{matchup.teams[1].golfers[1].name}}</div>
-                        <div>Team handicap: {{matchup.teams[1].handicap}}</div>
-                    </div>
-                </div>
-                Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
-            </div>
-            <!-- number 1 matchup -->
-            <div *ngIf="i == 0" class="green-container">
-                    <h2>Best Matchup</h2>
-                <div class="teams-container">
-                    <div class="team">
-                        <b>Team 1</b>
-                        <div>{{matchup.teams[0].golfers[0].name}}</div>
-                        <div>&</div>
-                        <div>{{matchup.teams[0].golfers[1].name}}</div>
-                        <div>Team handicap: {{matchup.teams[0].handicap}}</div>
-                    </div>
-                    vs.
-                    <div class="team">
-                        <b>Team 2</b>
-                        <div>{{matchup.teams[1].golfers[0].name}}</div>
-                        <div>&</div>
-                        <div>{{matchup.teams[1].golfers[1].name}}</div>
-                        <div>Team handicap: {{matchup.teams[1].handicap}}</div>
-                    </div>
-                </div>
-                <div *ngIf="matchup.handicapDiff !== 0; else nostrokes">
-                    Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
-                </div>
-                <ng-template #nostrokes>
-                    This matchup is even and <b>no strokes</b> should be awarded
-                </ng-template>
-            </div>  
-                <!-- number 3 matchup -->
-                <div *ngIf="i==2" class="orange-container delay-0-10s">
-                    <div class="teams-container">
-                        <div class="team">
-                            <b>Team 1</b>
-                            <div>{{matchup.teams[0].golfers[0].name}}</div>
-                            <div>&</div>
-                            <div>{{matchup.teams[0].golfers[1].name}}</div>
-                            <div>Team handicap: {{matchup.teams[0].handicap}}</div>
-                        </div>
-                        vs.
-                        <div class="team">
-                            <b>Team 2</b>
-                            <div>{{matchup.teams[1].golfers[0].name}}</div>
-                            <div>&</div>
-                            <div>{{matchup.teams[1].golfers[1].name}}</div>
-                            <div>Team handicap: {{matchup.teams[1].handicap}}</div>
-                        </div>
-                    </div>
-                    Team 1 should grant Team 2 <b>{{matchup.handicapDiff}}</b> stroke(s).
-                </div>
+<div class="matchups-container">
+  <div *ngFor="let matchup of matchups; index as i" class="matchup-card" [ngClass]="getCardClass(i)">
+    <div class="matchup-label" [ngClass]="getLabelClass(i)">{{ getLabel(i) }}</div>
+    <div class="matchup-teams">
+      <div class="matchup-team">
+        <div class="matchup-team-header">Team 1</div>
+        <div class="player-row">
+          <span class="player-name">{{ matchup.teams[0].golfers[0].name }}</span>
+          <span class="handicap-chip">{{ matchup.teams[0].golfers[0].handicap }}</span>
         </div>
-    </div> 
+        <div class="player-row">
+          <span class="player-name">{{ matchup.teams[0].golfers[1].name }}</span>
+          <span class="handicap-chip">{{ matchup.teams[0].golfers[1].handicap }}</span>
+        </div>
+        <div class="team-total">Handicap: <b>{{ matchup.teams[0].handicap }}</b></div>
+      </div>
+      <div class="matchup-vs">vs.</div>
+      <div class="matchup-team">
+        <div class="matchup-team-header">Team 2</div>
+        <div class="player-row">
+          <span class="player-name">{{ matchup.teams[1].golfers[0].name }}</span>
+          <span class="handicap-chip">{{ matchup.teams[1].golfers[0].handicap }}</span>
+        </div>
+        <div class="player-row">
+          <span class="player-name">{{ matchup.teams[1].golfers[1].name }}</span>
+          <span class="handicap-chip">{{ matchup.teams[1].golfers[1].handicap }}</span>
+        </div>
+        <div class="team-total">Handicap: <b>{{ matchup.teams[1].handicap }}</b></div>
+      </div>
+    </div>
+    <div class="matchup-strokes">
+      <ng-container *ngIf="matchup.handicapDiff !== 0; else noStrokes">
+        Team 1 grants Team 2 <b>{{ matchup.handicapDiff }}</b> stroke(s)
+      </ng-container>
+      <ng-template #noStrokes>
+        <b>Even match</b> — no strokes awarded
+      </ng-template>
+    </div>
+  </div>
 </div>

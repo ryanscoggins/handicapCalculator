@@ -232,3 +232,78 @@
   border-top: 1px solid #ddd;
   padding-top: .5rem;
 }
+
+/* Matchup cards (first tab) */
+.matchups-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: .5rem 0;
+}
+
+.matchup-card {
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  min-width: 14rem;
+  text-align: center;
+}
+
+.matchup-card-best {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+}
+
+.matchup-card-good {
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+}
+
+.matchup-card-worst {
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+}
+
+.matchup-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: .75rem;
+}
+
+.matchup-label-best { color: #15803d; }
+.matchup-label-good { color: #1d4ed8; }
+.matchup-label-worst { color: #c2410c; }
+
+.matchup-teams {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.matchup-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 5rem;
+}
+
+.matchup-team-header {
+  font-weight: 700;
+  margin-bottom: .25rem;
+  font-size: .95rem;
+}
+
+.matchup-vs {
+  font-weight: 600;
+  color: #888;
+  padding-top: 1.5rem;
+}
+
+.matchup-strokes {
+  margin-top: .75rem;
+  font-size: .85rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+  padding-top: .5rem;
+}

@@ -45,7 +45,7 @@
   </div>
 
   <div class="center-div" style="padding-top: 1rem;">
-    <p-button label="Create Tournament" icon="pi pi-flag" (onClick)="createTournament()"></p-button>
+    <p-button label="Create Tournament" icon="pi pi-trophy" [disabled]="showResults" (onClick)="createTournament()"></p-button>
   </div>
 </div>
 
