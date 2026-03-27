@@ -36,4 +36,4 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./scrambleHandicap/dist/scramble-handicap/
-          server-dir: /public_html/
+          server-dir: public_html/
