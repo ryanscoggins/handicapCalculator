@@ -28,9 +28,6 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration production
 
-      - name: Debug dist output
-        run: ls -R
-
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -38,5 +35,5 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           port: ${{ secrets.FTP_PORT }}
-          local-dir: ./dist/scramble-handicap/
+          local-dir: ./scrambleHandicap/dist/scramble-handicap/
           server-dir: /public_html/
