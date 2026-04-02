@@ -15,7 +15,10 @@ export class MatchupComponent {
 
   calculateHandicapDiff() {
     this.matchups.forEach(matchup => {
-      matchup.handicapDiff = Math.round(Math.abs(matchup.teams[0].handicap! - matchup.teams[1].handicap!));
+      // Round each team handicap up individually, then take the difference
+      const rounded0 = Math.ceil(matchup.teams[0].handicap!);
+      const rounded1 = Math.ceil(matchup.teams[1].handicap!);
+      matchup.handicapDiff = Math.abs(rounded0 - rounded1);
     });
   }
 

@@ -9,10 +9,10 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './foursome.component.html',
 })
 export class FoursomeComponent {
-  golfer1: Golfer = { name: 'Golfer 1', handicap: 0 };
-  golfer2: Golfer = { name: 'Golfer 2', handicap: 0 };
-  golfer3: Golfer = { name: 'Golfer 3', handicap: 0 };
-  golfer4: Golfer = { name: 'Golfer 4', handicap: 0 };
+  golfer1: Golfer = { name: 'Golfer 1', handicap: 0, isPlus: false };
+  golfer2: Golfer = { name: 'Golfer 2', handicap: 0, isPlus: false };
+  golfer3: Golfer = { name: 'Golfer 3', handicap: 0, isPlus: false };
+  golfer4: Golfer = { name: 'Golfer 4', handicap: 0, isPlus: false };
   allGolfers: Golfer[] = [ this.golfer1, this.golfer2, this.golfer3, this.golfer4 ]
 
   friendlyFormat: boolean = true;
@@ -66,15 +66,24 @@ export class FoursomeComponent {
   }
 
 
+  effectiveHandicap(golfer: Golfer): number {
+    return golfer.isPlus ? -golfer.handicap : golfer.handicap;
+  }
+
+  togglePlus(golfer: Golfer): void {
+    golfer.isPlus = !golfer.isPlus;
+    this.inputChange();
+  }
+
   calculateTeamHandicap(): void {
     for (let team of this.teams) {
       let totalHandicap = 0;
           for (let golfer of team.golfers) {
-            totalHandicap += golfer.handicap;
+            totalHandicap += this.effectiveHandicap(golfer);
           }
           totalHandicap = totalHandicap / 4
       // round to nearest tenth
-      team.handicap = Math.round(totalHandicap * 10) / 10; 
+      team.handicap = Math.round(totalHandicap * 10) / 10;
     }
     for (let matchup of this.matchups) {
       matchup.teams.sort((a, b) => a.handicap! - b.handicap!)

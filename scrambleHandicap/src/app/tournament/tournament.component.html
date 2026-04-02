@@ -11,6 +11,7 @@
         [placeholder]="'Player ' + (i + 1)"
         (ngModelChange)="inputChange()"
       />
+      <button class="plus-toggle" [class.active]="player.isPlus" (click)="togglePlus(player)" title="Toggle plus handicap">+</button>
       <p-inputNumber
         [(ngModel)]="player.handicap"
         [maxFractionDigits]="1"
@@ -60,7 +61,7 @@
       <div class="group-label">Group {{ group.label }}</div>
       <div *ngFor="let player of group.players; index as i" class="player-row">
         <span class="player-name">{{ player.name?.trim() || ('Player') }}</span>
-        <span class="handicap-chip">{{ player.handicap }}</span>
+        <span class="handicap-chip">{{ player.isPlus ? '+' : '' }}{{ player.handicap }}</span>
       </div>
     </div>
   </div>
@@ -73,7 +74,7 @@
       <div class="team-card-header">Team 1</div>
       <div *ngFor="let player of teamA; index as i" class="player-row">
         <span class="player-name">{{ player.name?.trim() || ('Player') }}</span>
-        <span class="handicap-chip">{{ player.handicap }}</span>
+        <span class="handicap-chip">{{ player.isPlus ? '+' : '' }}{{ player.handicap }}</span>
       </div>
       <div class="team-total">Total handicap: <b>{{ teamATotal }}</b></div>
     </div>
@@ -81,7 +82,7 @@
       <div class="team-card-header">Team 2</div>
       <div *ngFor="let player of teamB; index as i" class="player-row">
         <span class="player-name">{{ player.name?.trim() || ('Player') }}</span>
-        <span class="handicap-chip">{{ player.handicap }}</span>
+        <span class="handicap-chip">{{ player.isPlus ? '+' : '' }}{{ player.handicap }}</span>
       </div>
       <div class="team-total">Total handicap: <b>{{ teamBTotal }}</b></div>
     </div>

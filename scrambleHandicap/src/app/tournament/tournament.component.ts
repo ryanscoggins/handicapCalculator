@@ -14,10 +14,10 @@ export class TournamentComponent {
   readonly maxPlayers = 40;
 
   players: Golfer[] = [
-    { name: '', handicap: 0 },
-    { name: '', handicap: 0 },
-    { name: '', handicap: 0 },
-    { name: '', handicap: 0 },
+    { name: '', handicap: 0, isPlus: false },
+    { name: '', handicap: 0, isPlus: false },
+    { name: '', handicap: 0, isPlus: false },
+    { name: '', handicap: 0, isPlus: false },
   ];
 
   groups: TournamentGroup[] = [];
@@ -32,9 +32,18 @@ export class TournamentComponent {
     return this.players.length < this.maxPlayers;
   }
 
+  effectiveHandicap(golfer: Golfer): number {
+    return golfer.isPlus ? -golfer.handicap : golfer.handicap;
+  }
+
+  togglePlus(golfer: Golfer): void {
+    golfer.isPlus = !golfer.isPlus;
+    this.inputChange();
+  }
+
   addPlayer(): void {
     if (this.canAddPlayer) {
-      this.players.push({ name: '', handicap: 0 });
+      this.players.push({ name: '', handicap: 0, isPlus: false });
     }
     this.showResults = false;
   }
@@ -49,7 +58,7 @@ export class TournamentComponent {
   }
 
   createTournament(): void {
-    const sorted = [...this.players].sort((a, b) => a.handicap - b.handicap);
+    const sorted = [...this.players].sort((a, b) => this.effectiveHandicap(a) - this.effectiveHandicap(b));
 
     // Build A/B/C/D groups — always 4 groups, split as evenly as possible
     const numGroups = 4;
@@ -69,7 +78,7 @@ export class TournamentComponent {
 
     // Split into two equal-size teams using snake-draft order
     // Sort ascending (best = lowest handicap first), then snake: 1, 2, 2, 1, 1, 2, 2, 1...
-    const sortedAsc = [...this.players].sort((a, b) => a.handicap - b.handicap);
+    const sortedAsc = [...this.players].sort((a, b) => this.effectiveHandicap(a) - this.effectiveHandicap(b));
     this.teamA = [];
     this.teamB = [];
 
@@ -83,11 +92,11 @@ export class TournamentComponent {
       }
     });
 
-    const sumA = this.teamA.reduce((s, g) => s + g.handicap, 0);
-    const sumB = this.teamB.reduce((s, g) => s + g.handicap, 0);
+    const sumA = this.teamA.reduce((s, g) => s + this.effectiveHandicap(g), 0);
+    const sumB = this.teamB.reduce((s, g) => s + this.effectiveHandicap(g), 0);
     this.teamATotal = Math.round(sumA * 10) / 10;
     this.teamBTotal = Math.round(sumB * 10) / 10;
-    this.teamDiff = Math.round(Math.abs(sumA - sumB) * 10) / 10;
+    this.teamDiff = Math.abs(Math.ceil(sumA) - Math.ceil(sumB));
     this.showResults = true;
   }
 

@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(find /c/repos/handicapCalculator/scrambleHandicap/src -type f \\\\\\(-name *.ts -o -name *.html -o -name *.css -o -name *.scss \\\\\\))",
+      "Bash(npx ng:*)"
     ]
   }
 }

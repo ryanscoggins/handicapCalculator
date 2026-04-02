@@ -6,11 +6,11 @@
         <div class="matchup-team-header">Team 1</div>
         <div class="player-row">
           <span class="player-name">{{ matchup.teams[0].golfers[0].name }}</span>
-          <span class="handicap-chip">{{ matchup.teams[0].golfers[0].handicap }}</span>
+          <span class="handicap-chip">{{ matchup.teams[0].golfers[0].isPlus ? '+' : '' }}{{ matchup.teams[0].golfers[0].handicap }}</span>
         </div>
         <div class="player-row">
           <span class="player-name">{{ matchup.teams[0].golfers[1].name }}</span>
-          <span class="handicap-chip">{{ matchup.teams[0].golfers[1].handicap }}</span>
+          <span class="handicap-chip">{{ matchup.teams[0].golfers[1].isPlus ? '+' : '' }}{{ matchup.teams[0].golfers[1].handicap }}</span>
         </div>
         <div class="team-total">Handicap: <b>{{ matchup.teams[0].handicap }}</b></div>
       </div>
@@ -19,11 +19,11 @@
         <div class="matchup-team-header">Team 2</div>
         <div class="player-row">
           <span class="player-name">{{ matchup.teams[1].golfers[0].name }}</span>
-          <span class="handicap-chip">{{ matchup.teams[1].golfers[0].handicap }}</span>
+          <span class="handicap-chip">{{ matchup.teams[1].golfers[0].isPlus ? '+' : '' }}{{ matchup.teams[1].golfers[0].handicap }}</span>
         </div>
         <div class="player-row">
           <span class="player-name">{{ matchup.teams[1].golfers[1].name }}</span>
-          <span class="handicap-chip">{{ matchup.teams[1].golfers[1].handicap }}</span>
+          <span class="handicap-chip">{{ matchup.teams[1].golfers[1].isPlus ? '+' : '' }}{{ matchup.teams[1].golfers[1].handicap }}</span>
         </div>
         <div class="team-total">Handicap: <b>{{ matchup.teams[1].handicap }}</b></div>
       </div>

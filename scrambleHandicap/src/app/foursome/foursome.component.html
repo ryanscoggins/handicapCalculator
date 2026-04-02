@@ -5,19 +5,23 @@
   <div class="player-list">
     <div class="inputRow tournament-row">
       <input type="text" pInputText [(ngModel)]="golfer1.name" placeholder="Player 1" (ngModelChange)="inputChange()"/>
-      <p-inputNumber [(ngModel)]="golfer1.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
+      <button class="plus-toggle" [class.active]="golfer1.isPlus" (click)="togglePlus(golfer1)" title="Toggle plus handicap">+</button>
+      <p-inputNumber [(ngModel)]="golfer1.handicap" [maxFractionDigits]="1" [min]="0" (ngModelChange)="inputChange()"></p-inputNumber>
     </div>
     <div class="inputRow tournament-row">
       <input type="text" pInputText [(ngModel)]="golfer2.name" placeholder="Player 2" (ngModelChange)="inputChange()"/>
-      <p-inputNumber [(ngModel)]="golfer2.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
+      <button class="plus-toggle" [class.active]="golfer2.isPlus" (click)="togglePlus(golfer2)" title="Toggle plus handicap">+</button>
+      <p-inputNumber [(ngModel)]="golfer2.handicap" [maxFractionDigits]="1" [min]="0" (ngModelChange)="inputChange()"></p-inputNumber>
     </div>
     <div class="inputRow tournament-row">
       <input type="text" pInputText [(ngModel)]="golfer3.name" placeholder="Player 3" (ngModelChange)="inputChange()"/>
-      <p-inputNumber [(ngModel)]="golfer3.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
+      <button class="plus-toggle" [class.active]="golfer3.isPlus" (click)="togglePlus(golfer3)" title="Toggle plus handicap">+</button>
+      <p-inputNumber [(ngModel)]="golfer3.handicap" [maxFractionDigits]="1" [min]="0" (ngModelChange)="inputChange()"></p-inputNumber>
     </div>
     <div class="inputRow tournament-row">
       <input type="text" pInputText [(ngModel)]="golfer4.name" placeholder="Player 4" (ngModelChange)="inputChange()"/>
-      <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1" (ngModelChange)="inputChange()"></p-inputNumber>
+      <button class="plus-toggle" [class.active]="golfer4.isPlus" (click)="togglePlus(golfer4)" title="Toggle plus handicap">+</button>
+      <p-inputNumber [(ngModel)]="golfer4.handicap" [maxFractionDigits]="1" [min]="0" (ngModelChange)="inputChange()"></p-inputNumber>
     </div>
   </div>
 
@@ -27,5 +31,11 @@
 
   <div *ngIf="showMatchups" style="padding-top: 1.5rem;">
     <app-matchup [matchups]="matchups"></app-matchup>
+    <div class="explainer-text">
+      <b>How team handicaps are calculated:</b> All four players' handicaps are added together, then divided by 4 to get a combined scramble handicap for each pairing.
+      For example, if a team has a {{ golfer1.isPlus ? '+' : '' }}{{ golfer1.handicap }} and a {{ golfer2.isPlus ? '+' : '' }}{{ golfer2.handicap }},
+      their team handicap is ({{ effectiveHandicap(golfer1) }} + {{ effectiveHandicap(golfer2) }}) / 4 = {{ (effectiveHandicap(golfer1) + effectiveHandicap(golfer2)) / 4 }}.
+      Strokes awarded are based on the difference between the rounded-up team handicaps.
+    </div>
   </div>
 </div>

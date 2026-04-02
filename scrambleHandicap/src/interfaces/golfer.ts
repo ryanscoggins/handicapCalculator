@@ -1,4 +1,5 @@
 export interface Golfer {
     name: string,
-    handicap: number
+    handicap: number,
+    isPlus?: boolean
 }
